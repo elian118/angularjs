@@ -1,24 +1,5 @@
-angular.module('todo').controller('TodoCtrl', ['$scope', ($scope) => {
-    $scope.todos = [
-        {
-            id: 1,
-            title: '요가수련',
-            completed: false,
-            createdAt: Date.now()
-        },
-        {
-            id: 2,
-            title: '앵귤러 학습',
-            completed: false,
-            createdAt: Date.now()
-        },
-        {
-            id: 3,
-            title: '운동',
-            completed: true,
-            createdAt: Date.now()
-        }
-    ];
+angular.module('todo').controller('TodoCtrl', ($scope, todoStorage) => {
+    $scope.todos = todoStorage.get();
 
     $scope.remove = (todo) => {
         const idx = $scope.todos.findIndex((item) => item.id === todo.id);
@@ -37,4 +18,4 @@ angular.module('todo').controller('TodoCtrl', ['$scope', ($scope) => {
         $scope.todos.push(newTodo);
         $scope.newTodoTitle = ''; // 인풋 초기화
     }
-}]);
+});
