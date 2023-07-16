@@ -8,30 +8,31 @@
     <title>Title</title>
 </head>
 <body ng-app="todo" ng-controller="TodoCtrl">
-<h1 class="text-3xl font-bold underline">
-    Hello world!
-</h1>
-
-<h1>Todo</h1>
-<ul>
-    <li ng-repeat="todo in todos" class="list-none">
-        <div class="max-w-[300px]">
-            <div class="w-full flex flex-row justify-center items-center rounded-xl">
-                <span class="py-2 px-4 rounded-l-xl border bg-gray-200">
-                  <input type="checkbox" ng-model="todo.completed" aria-label="..." />
-                </span>
-                <input type="text" class="p-2 border w-full" ng-model="todo.title"  aria-label="..." />
-                <span
-                    class="py-2 px-4 min-w-max bg-red-500 hover:bg-red-700 text-white border rounded-r-xl hover:cursor-pointer"
-                    ng-click="remove(todo)"
-                >
-                    삭제
-                </span>
+<div class="p-8">
+    <h1 class="text-4xl font-bold mb-4">할 일 목록</h1>
+    <ul>
+        <li ng-repeat="todo in todos | filter:statusFilter" class="list-none my-2">
+            <div class="max-w-[300px]">
+                <div class="w-full flex flex-row justify-center items-center rounded-xl">
+                    <span class="py-2 px-4 rounded-l-xl border bg-gray-200">
+                      <input type="checkbox" ng-model="todo.completed" aria-label="..." />
+                    </span>
+                    <input type="text" class="p-2 border w-full" ng-model="todo.title"  aria-label="..." />
+                    <button
+                        class="py-2 px-4 min-w-max bg-red-500 hover:bg-red-700 text-white border rounded-r-xl"
+                        ng-click="remove(todo)"
+                    >
+                        삭제
+                    </button>
+                </div>
             </div>
-        </div>
+            <date>{{ todo.createdAt | date: 'yyyy-MM-dd hh:mm:ss'}}</date>
+        </li>
+    </ul>
 
-        <date>{{ todo.createdAt | date: 'yyyy-MM-dd hh:mm:ss'}}</date>
-    </li>
-</ul>
+    <button class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md" ng-click="statusFilter={completed: true}">Completed</button>
+    <button class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md" ng-click="statusFilter={completed: false}">Active</button>
+    <button class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md" ng-click="statusFilter={}">All</button>
+</div>
 </body>
 </html>
