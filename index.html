@@ -10,21 +10,27 @@
 <body ng-app="todo" ng-controller="TodoCtrl">
 <div class="p-8">
     <h1 class="text-4xl font-bold mb-4">할 일 목록</h1>
-    <form name="todoForm" class="max-w-[300px] flex flex-row mb-4" ng-submit="add(newTodoTitle)">
-        <input
-            class="p-2 border rounded-l-md w-full"
-            type="text"
-            ng-model="newTodoTitle"
-            placeholder="새로운 할 일을 입력하세요."
-            autofocus
-        />
-        <button
-            class="min-w-max px-4 py-2 bg-green-500 hover:bg-green-700 text-white rounded-r-md"
-            type="submit"
-        >
-            추가
-        </button>
+    <form name="todoForm" class="max-w-[300px] mb-4" ng-submit="add(newTodoTitle)">
+        <div class="flex flex-row">
+            <input
+                class="p-2 border rounded-l-md w-full"
+                type="text"
+                ng-model="newTodoTitle"
+                placeholder="새로운 할 일을 입력하세요."
+                autofocus
+                minlength="3"
+            />
+            <button
+                class="min-w-max px-4 py-2 bg-green-500 hover:bg-green-700 text-white rounded-r-md"
+                type="submit"
+            >
+                추가
+            </button>
+        </div>
+        <div ng-show="todoForm.$dirty && todoForm.$invalid" class="px-2 py-[4px] bg-amber-100 text-amber-700">3글자 이상 입력하세요.</div>
     </form>
+    <!--  test: <form name="todoForm" ... /> 에서 앵귤러에 선언된 todoForm 정보를 확인할 수 있다. 이걸로 유효성 검사에 활용 가능  -->
+    <!--  <pre>{{todoForm | json}}</pre>  -->
     <ul>
         <li ng-repeat="todo in todos | filter:statusFilter" class="list-none my-2">
             <div class="max-w-[300px]">
