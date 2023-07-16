@@ -1,6 +1,4 @@
-const scrips = angular.module('todo', []);
-
-scrips.controller('TodoCtrl', ['$scope', ($scope) => {
+angular.module('todo').controller('TodoCtrl', ['$scope', ($scope) => {
     $scope.todos = [
         {
             id: 1,
