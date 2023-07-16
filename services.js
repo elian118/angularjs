@@ -22,6 +22,20 @@ angular.module('todo').factory('todoStorage', () => {
             }
         ],
         get: () => storage.todos,
+        remove: (todo) => {
+            const idx = storage.todos.findIndex((item) => item.id === todo.id);
+            idx > -1 && storage.todos.splice(idx, 1);
+        },
+        add: (newTodoTitle) => {
+            const newTodo = {
+                id: storage.todos.length ? storage.todos[storage.todos.length - 1].id + 1 : 1,
+                title: newTodoTitle,
+                completed: false,
+                createdAt: Date.now()
+            };
+
+            storage.todos.push(newTodo);
+        }
     };
 
     return storage;
