@@ -1,0 +1,14 @@
+{
+  "name": "angularjs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/elian118/angularjs.git",
+  "author": "elian <elian118@naver.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

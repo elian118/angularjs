@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer-when-downgrade" />
     <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="app.js"></script>
-    <title>Title</title>
+    <title>할 일 목록</title>
 </head>
 <body ng-app="todo" ng-controller="TodoCtrl">
 <div class="p-8">
@@ -35,21 +36,7 @@
     <!--  <pre>{{todoForm | json}}</pre>  -->
     <ul>
         <li ng-repeat="todo in todos | filter:statusFilter" class="list-none my-2">
-            <div class="max-w-[300px]">
-                <div class="w-full flex flex-row justify-center items-center rounded-md">
-                    <span class="py-2 px-4 rounded-l-md border bg-gray-200">
-                      <input type="checkbox" ng-model="todo.completed" aria-label="..." />
-                    </span>
-                    <input type="text" class="p-2 border w-full" ng-model="todo.title"  aria-label="..." />
-                    <button
-                        class="py-2 px-4 min-w-max bg-red-500 hover:bg-red-700 text-white border rounded-r-md"
-                        ng-click="remove(todo)"
-                    >
-                        삭제
-                    </button>
-                </div>
-            </div>
-            <date>{{ todo.createdAt | date: 'yyyy-MM-dd hh:mm:ss'}}</date>
+            <todo-item></todo-item>
         </li>
     </ul>
 

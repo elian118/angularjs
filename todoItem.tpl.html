@@ -1,0 +1,15 @@
+<div class="max-w-[300px]">
+  <div class="w-full flex flex-row justify-center items-center rounded-md">
+    <span class="py-2 px-4 rounded-l-md bor`der bg-gray-200">
+      <input type="checkbox" ng-model="todo.completed" aria-label="..." />
+    </span>
+    <input type="text" class="p-2 border w-full" ng-model="todo.title"  aria-label="..." />
+    <button
+            class="py-2 px-4 min-w-max bg-red-500 hover:bg-red-700 text-white border rounded-r-md"
+            ng-click="remove(todo)"
+    >
+      삭제
+    </button>
+  </div>
+</div>
+<date>{{ todo.createdAt | date: 'yyyy-MM-dd hh:mm:ss'}}</date>
