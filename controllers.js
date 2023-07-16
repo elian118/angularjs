@@ -7,4 +7,6 @@ angular.module('todo').controller('TodoCtrl', ($scope, todoStorage) => {
         todoStorage.add(newTodoTitle);
         $scope.newTodoTitle = ''; // 인풋 초기화
     }
+
+    $scope.update = () => todoStorage.update();
 });
