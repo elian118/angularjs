@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="app.js"></script>
+    <title>Title</title>
+</head>
+<body ng-app="todo" ng-controller="TodoCtrl">
+<h1 class="text-3xl font-bold underline">
+    Hello world!
+</h1>
+
+<h1>Todo</h1>
+<ul>
+    <li ng-repeat="todo in todos" class="list-none">
+        <div class="max-w-[300px]">
+            <div class="w-full flex flex-row justify-center items-center rounded-xl">
+                <span class="py-2 px-4 rounded-l-xl border bg-gray-200">
+                  <input type="checkbox" ng-model="todo.completed" aria-label="..." />
+                </span>
+                <input type="text" class="p-2 border w-full" ng-model="todo.title"  aria-label="..." />
+                <span
+                    class="py-2 px-4 min-w-max bg-red-500 hover:bg-red-700 text-white border rounded-r-xl hover:cursor-pointer"
+                    ng-click="remove(todo)"
+                >
+                    삭제
+                </span>
+            </div>
+        </div>
+
+        <date>{{ todo.createdAt | date: 'yyyy-MM-dd hh:mm:ss'}}</date>
+    </li>
+</ul>
+</body>
+</html>
